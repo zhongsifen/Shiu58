@@ -6,6 +6,8 @@
 //  Copyright © 2017 ___ZHONGSIFEN___. All rights reserved.
 //
 
+#include "Shiu58.hpp"
+
 #include <iostream>
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc.hpp>
@@ -14,7 +16,7 @@
 using namespace cv;
 
 int main(int argc, const char * argv[]) {
-//	Dect58 dect(RES + "haarcascades_hand/palm.xml");
+	Shiu58 dect;
 	
 	bool ret = false;
 	char key = '\0';
@@ -65,20 +67,20 @@ int main(int argc, const char * argv[]) {
 		g = hsl[2];
 		imshow("Shiu", g);
 		
-//		ret = dect.detect(g, box, level, weight);
-//		
-//		if (ret) {
-//			Point pt(box.x + box.width/2, box.y + box.height/2);
+		ret = dect.detect(g, box, level, weight);
+		
+		if (ret) {
+			Point pt(box.x + box.width/2, box.y + box.height/2);
 //			Dect58UI::show_point(w, pt, COLOR_0000FF);
 //			Dect58UI::show_rect(w, box, COLOR_0000FF);
-//			std::cout << "level: " << level << "  " << "weight: " << weight << std::endl;
-//			imshow("Dect58", w);
-//#if FILEINPUT
-//			imwrite(folder + rectname + index_c + ".png", w);
-//			positive << filename;
-//			positive << std::endl;
-//#endif
-//		}
+			std::cout << "level: " << level << "  " << "weight: " << weight << std::endl;
+			imshow("Dect58", w);
+#if FILEINPUT
+			imwrite(folder + rectname + index_c + ".png", w);
+			positive << filename;
+			positive << std::endl;
+#endif
+		}
 		key = waitKey(waittime);		if (key == 'q') break;
 	} while (1);
 #if FILEINPUT
