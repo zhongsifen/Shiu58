@@ -44,7 +44,7 @@
 #include <iostream>
 
 #include "cascadedetect.hpp"
-#include "opencv2/objdetect/objdetect_c.h"
+//#include "opencv2/objdetect/objdetect_c.h"
 //#include "opencl_kernels_objdetect.hpp"
 
 namespace cv
