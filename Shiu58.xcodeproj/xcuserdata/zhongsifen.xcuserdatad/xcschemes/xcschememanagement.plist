@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>appShiu58.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>simplecv.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -28,6 +33,11 @@
 			<true/>
 		</dict>
 		<key>8C69DA761F4C8036006A81AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8C69DAA41F4CA228006A81AC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

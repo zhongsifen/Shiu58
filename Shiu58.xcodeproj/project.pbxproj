@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C4270291F4D35B90025ED70 /* libopencv_core.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4270271F4D35B90025ED70 /* libopencv_core.3.3.0.dylib */; };
+		8C42702A1F4D35B90025ED70 /* libopencv_imgproc.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4270281F4D35B90025ED70 /* libopencv_imgproc.3.3.0.dylib */; };
+		8C42702D1F4D36530025ED70 /* libopencv_highgui.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C42702B1F4D36530025ED70 /* libopencv_highgui.3.3.0.dylib */; };
+		8C42702E1F4D36530025ED70 /* libopencv_videoio.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C42702C1F4D36530025ED70 /* libopencv_videoio.3.3.0.dylib */; };
+		8C42702F1F4D36800025ED70 /* libopencv_core.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4270271F4D35B90025ED70 /* libopencv_core.3.3.0.dylib */; };
+		8C4270301F4D36800025ED70 /* libopencv_imgproc.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4270281F4D35B90025ED70 /* libopencv_imgproc.3.3.0.dylib */; };
 		8C69DA6B1F4C6C9B006A81AC /* Dect58UI.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8C69DA641F4C6C9B006A81AC /* Dect58UI.hpp */; };
 		8C69DA6D1F4C6C9B006A81AC /* Shiu.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8C69DA661F4C6C9B006A81AC /* Shiu.hpp */; };
 		8C69DA6E1F4C6CBF006A81AC /* Shiu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C69DA651F4C6C9B006A81AC /* Shiu.cpp */; };
@@ -21,11 +27,29 @@
 		8C69DA941F4C8106006A81AC /* haar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C69DA811F4C80CA006A81AC /* haar.cpp */; };
 		8C69DA951F4C8106006A81AC /* hog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C69DA831F4C80CA006A81AC /* hog.cpp */; };
 		8C69DA961F4C8106006A81AC /* simplecv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C69DA841F4C80CA006A81AC /* simplecv.cpp */; };
-		8C69DA991F4C8871006A81AC /* libopencv_core.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C69DA981F4C8871006A81AC /* libopencv_core.dylib */; };
-		8C69DA9B1F4C88BA006A81AC /* libopencv_imgproc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C69DA9A1F4C88BA006A81AC /* libopencv_imgproc.dylib */; };
+		8C69DA9E1F4C9C95006A81AC /* Shiu58.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C69DA9C1F4C9C95006A81AC /* Shiu58.cpp */; };
+		8C69DA9F1F4C9C95006A81AC /* Shiu58.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8C69DA9D1F4C9C95006A81AC /* Shiu58.hpp */; };
+		8C69DAA81F4CA228006A81AC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C69DAA71F4CA228006A81AC /* main.cpp */; };
+		8C69DAAC1F4CA684006A81AC /* libsimplecv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C69DA771F4C8036006A81AC /* libsimplecv.dylib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8C69DAA31F4CA228006A81AC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		8C4270271F4D35B90025ED70 /* libopencv_core.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.3.3.0.dylib; path = opencv/lib/libopencv_core.3.3.0.dylib; sourceTree = "<group>"; };
+		8C4270281F4D35B90025ED70 /* libopencv_imgproc.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.3.3.0.dylib; path = opencv/lib/libopencv_imgproc.3.3.0.dylib; sourceTree = "<group>"; };
+		8C42702B1F4D36530025ED70 /* libopencv_highgui.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.3.3.0.dylib; path = opencv/lib/libopencv_highgui.3.3.0.dylib; sourceTree = "<group>"; };
+		8C42702C1F4D36530025ED70 /* libopencv_videoio.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videoio.3.3.0.dylib; path = opencv/lib/libopencv_videoio.3.3.0.dylib; sourceTree = "<group>"; };
 		8C69DA5B1F4C6C52006A81AC /* libShiu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libShiu.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C69DA631F4C6C9B006A81AC /* Dect58UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dect58UI.cpp; sourceTree = "<group>"; };
 		8C69DA641F4C6C9B006A81AC /* Dect58UI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Dect58UI.hpp; sourceTree = "<group>"; };
@@ -44,8 +68,10 @@
 		8C69DA831F4C80CA006A81AC /* hog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hog.cpp; sourceTree = "<group>"; };
 		8C69DA841F4C80CA006A81AC /* simplecv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simplecv.cpp; sourceTree = "<group>"; };
 		8C69DA851F4C80CA006A81AC /* simplecv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = simplecv.hpp; sourceTree = "<group>"; };
-		8C69DA981F4C8871006A81AC /* libopencv_core.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.dylib; path = opencv/lib/libopencv_core.dylib; sourceTree = "<group>"; };
-		8C69DA9A1F4C88BA006A81AC /* libopencv_imgproc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.dylib; path = opencv/lib/libopencv_imgproc.dylib; sourceTree = "<group>"; };
+		8C69DA9C1F4C9C95006A81AC /* Shiu58.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shiu58.cpp; path = Shiu58/Shiu58.cpp; sourceTree = "<group>"; };
+		8C69DA9D1F4C9C95006A81AC /* Shiu58.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Shiu58.hpp; path = Shiu58/Shiu58.hpp; sourceTree = "<group>"; };
+		8C69DAA51F4CA228006A81AC /* appShiu58 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = appShiu58; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C69DAA71F4CA228006A81AC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8CBD33A31F4C5926006E0E0A /* libShiu58.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libShiu58.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -61,8 +87,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C69DA9B1F4C88BA006A81AC /* libopencv_imgproc.dylib in Frameworks */,
-				8C69DA991F4C8871006A81AC /* libopencv_core.dylib in Frameworks */,
+				8C4270291F4D35B90025ED70 /* libopencv_core.3.3.0.dylib in Frameworks */,
+				8C42702A1F4D35B90025ED70 /* libopencv_imgproc.3.3.0.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8C69DAA21F4CA228006A81AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C42702F1F4D36800025ED70 /* libopencv_core.3.3.0.dylib in Frameworks */,
+				8C4270301F4D36800025ED70 /* libopencv_imgproc.3.3.0.dylib in Frameworks */,
+				8C42702D1F4D36530025ED70 /* libopencv_highgui.3.3.0.dylib in Frameworks */,
+				8C42702E1F4D36530025ED70 /* libopencv_videoio.3.3.0.dylib in Frameworks */,
+				8C69DAAC1F4CA684006A81AC /* libsimplecv.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,19 +145,40 @@
 		8C69DA971F4C8871006A81AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8C69DA9A1F4C88BA006A81AC /* libopencv_imgproc.dylib */,
-				8C69DA981F4C8871006A81AC /* libopencv_core.dylib */,
+				8C42702B1F4D36530025ED70 /* libopencv_highgui.3.3.0.dylib */,
+				8C42702C1F4D36530025ED70 /* libopencv_videoio.3.3.0.dylib */,
+				8C4270271F4D35B90025ED70 /* libopencv_core.3.3.0.dylib */,
+				8C4270281F4D35B90025ED70 /* libopencv_imgproc.3.3.0.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C69DAA01F4C9CB8006A81AC /* Shiu58 */ = {
+			isa = PBXGroup;
+			children = (
+				8C69DA9C1F4C9C95006A81AC /* Shiu58.cpp */,
+				8C69DA9D1F4C9C95006A81AC /* Shiu58.hpp */,
+			);
+			name = Shiu58;
+			sourceTree = "<group>";
+		};
+		8C69DAA61F4CA228006A81AC /* appShiu58 */ = {
+			isa = PBXGroup;
+			children = (
+				8C69DAA71F4CA228006A81AC /* main.cpp */,
+			);
+			path = appShiu58;
 			sourceTree = "<group>";
 		};
 		8CBD339A1F4C5926006E0E0A = {
 			isa = PBXGroup;
 			children = (
+				8C69DAA01F4C9CB8006A81AC /* Shiu58 */,
 				8C69DA7B1F4C80CA006A81AC /* simplecv */,
 				8C69DA6F1F4C6DB3006A81AC /* _opencv2.cpp */,
 				8C69DA701F4C6DB3006A81AC /* _opencv2.hpp */,
 				8C69DA5F1F4C6C9B006A81AC /* Shiu */,
+				8C69DAA61F4CA228006A81AC /* appShiu58 */,
 				8CBD33A41F4C5926006E0E0A /* Products */,
 				8C69DA971F4C8871006A81AC /* Frameworks */,
 			);
@@ -131,6 +190,7 @@
 				8CBD33A31F4C5926006E0E0A /* libShiu58.dylib */,
 				8C69DA5B1F4C6C52006A81AC /* libShiu.a */,
 				8C69DA771F4C8036006A81AC /* libsimplecv.dylib */,
+				8C69DAA51F4CA228006A81AC /* appShiu58 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -158,6 +218,7 @@
 			files = (
 				8C69DA8C1F4C80CA006A81AC /* haar.hpp in Headers */,
 				8C69DA871F4C80CA006A81AC /* cascadedetect.hpp in Headers */,
+				8C69DA9F1F4C9C95006A81AC /* Shiu58.hpp in Headers */,
 				8C69DA8F1F4C80CA006A81AC /* simplecv.hpp in Headers */,
 				8C69DA6D1F4C6C9B006A81AC /* Shiu.hpp in Headers */,
 				8C69DA721F4C6DB3006A81AC /* _opencv2.hpp in Headers */,
@@ -202,6 +263,23 @@
 			productReference = 8C69DA771F4C8036006A81AC /* libsimplecv.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
+		8C69DAA41F4CA228006A81AC /* appShiu58 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C69DAA91F4CA228006A81AC /* Build configuration list for PBXNativeTarget "appShiu58" */;
+			buildPhases = (
+				8C69DAA11F4CA228006A81AC /* Sources */,
+				8C69DAA21F4CA228006A81AC /* Frameworks */,
+				8C69DAA31F4CA228006A81AC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = appShiu58;
+			productName = appShiu58;
+			productReference = 8C69DAA51F4CA228006A81AC /* appShiu58 */;
+			productType = "com.apple.product-type.tool";
+		};
 		8CBD33A21F4C5926006E0E0A /* Shiu58 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8CBD33A71F4C5926006E0E0A /* Build configuration list for PBXNativeTarget "Shiu58" */;
@@ -236,6 +314,10 @@
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
 					};
+					8C69DAA41F4CA228006A81AC = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
 					8CBD33A21F4C5926006E0E0A = {
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
@@ -257,6 +339,7 @@
 				8CBD33A21F4C5926006E0E0A /* Shiu58 */,
 				8C69DA5A1F4C6C52006A81AC /* Shiu */,
 				8C69DA761F4C8036006A81AC /* simplecv */,
+				8C69DAA41F4CA228006A81AC /* appShiu58 */,
 			);
 		};
 /* End PBXProject section */
@@ -284,10 +367,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8C69DAA11F4CA228006A81AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C69DAA81F4CA228006A81AC /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8CBD339F1F4C5926006E0E0A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C69DA9E1F4C9C95006A81AC /* Shiu58.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +438,28 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/opencv/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8C69DAAA1F4CA228006A81AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/opencv/lib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8C69DAAB1F4CA228006A81AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/opencv/lib",
@@ -489,6 +603,7 @@
 				8C69DA5D1F4C6C52006A81AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8C69DA781F4C8036006A81AC /* Build configuration list for PBXNativeTarget "simplecv" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +612,16 @@
 				8C69DA7A1F4C8036006A81AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C69DAA91F4CA228006A81AC /* Build configuration list for PBXNativeTarget "appShiu58" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C69DAAA1F4CA228006A81AC /* Debug */,
+				8C69DAAB1F4CA228006A81AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8CBD339E1F4C5926006E0E0A /* Build configuration list for PBXProject "Shiu58" */ = {
 			isa = XCConfigurationList;
