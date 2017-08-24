@@ -14,6 +14,11 @@
 
 const std::string RES("/Users/zhongsifen/Work/Shiu58/res/");
 const std::string palm("haarcascades/palm.xml");
+const std::string palm_closed("haarcascades/closed_frontal_palm.xml");
+const std::string face("haarcascades/haarcascade_frontalface_alt2.xml");
+const std::string gest("haarcascades/aGest.xml");
+const std::string fist("haarcascades/fist.xml");
+
 class Shiu58 {
 	int _status;
 	cv::CascadeClassifier _cf;
@@ -32,7 +37,7 @@ class Shiu58 {
 	
 public:
 	Shiu58() { _status = 0; }
-	bool load(std::string filename = RES+palm);
+	bool load(std::string filename = RES+fist);
 	bool setup(cv::Mat& frame);
 	bool run(cv::Mat& frame);
 	bool show(cv::Mat& frame);

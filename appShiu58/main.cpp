@@ -28,7 +28,7 @@ int main(int argc, const char * argv[]) {
 //	Rect box;
 //	int level=0;
 //	double weight=0;
-	const int waittime = 5;
+	const int waittime = 1;
 	VideoCapture cap;
 	cap.open(0);		if (!cap.isOpened()) return -1;
 	ret = cap.read(f);		if (!ret) return -1;
@@ -41,8 +41,8 @@ int main(int argc, const char * argv[]) {
 		
 		if (ret) {
 			shiu.show(w);
-			imshow("Shiu58", w);
 		}
+		imshow("Shiu58", w);
 		key = waitKey(waittime);		if (key == 'q') break;
 	} while (1);
 
