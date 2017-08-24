@@ -11,7 +11,6 @@
 		8C42702A1F4D35B90025ED70 /* libopencv_imgproc.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4270281F4D35B90025ED70 /* libopencv_imgproc.3.3.0.dylib */; };
 		8C42702D1F4D36530025ED70 /* libopencv_highgui.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C42702B1F4D36530025ED70 /* libopencv_highgui.3.3.0.dylib */; };
 		8C42702E1F4D36530025ED70 /* libopencv_videoio.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C42702C1F4D36530025ED70 /* libopencv_videoio.3.3.0.dylib */; };
-		8C69DA6B1F4C6C9B006A81AC /* Dect58UI.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8C69DA641F4C6C9B006A81AC /* Dect58UI.hpp */; };
 		8C69DA871F4C80CA006A81AC /* cascadedetect.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8C69DA7D1F4C80CA006A81AC /* cascadedetect.hpp */; };
 		8C69DA8C1F4C80CA006A81AC /* haar.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8C69DA821F4C80CA006A81AC /* haar.hpp */; };
 		8C69DA8F1F4C80CA006A81AC /* simplecv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8C69DA851F4C80CA006A81AC /* simplecv.hpp */; };
@@ -51,8 +50,6 @@
 		8C4270281F4D35B90025ED70 /* libopencv_imgproc.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.3.3.0.dylib; path = opencv/lib/libopencv_imgproc.3.3.0.dylib; sourceTree = "<group>"; };
 		8C42702B1F4D36530025ED70 /* libopencv_highgui.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.3.3.0.dylib; path = opencv/lib/libopencv_highgui.3.3.0.dylib; sourceTree = "<group>"; };
 		8C42702C1F4D36530025ED70 /* libopencv_videoio.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videoio.3.3.0.dylib; path = opencv/lib/libopencv_videoio.3.3.0.dylib; sourceTree = "<group>"; };
-		8C69DA631F4C6C9B006A81AC /* Dect58UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dect58UI.cpp; sourceTree = "<group>"; };
-		8C69DA641F4C6C9B006A81AC /* Dect58UI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Dect58UI.hpp; sourceTree = "<group>"; };
 		8C69DA771F4C8036006A81AC /* libsimplecv.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsimplecv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C69DA7C1F4C80CA006A81AC /* cascadedetect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cascadedetect.cpp; sourceTree = "<group>"; };
 		8C69DA7D1F4C80CA006A81AC /* cascadedetect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cascadedetect.hpp; sourceTree = "<group>"; };
@@ -107,15 +104,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8C69DA5F1F4C6C9B006A81AC /* Shiu */ = {
-			isa = PBXGroup;
-			children = (
-				8C69DA631F4C6C9B006A81AC /* Dect58UI.cpp */,
-				8C69DA641F4C6C9B006A81AC /* Dect58UI.hpp */,
-			);
-			path = Shiu;
-			sourceTree = "<group>";
-		};
 		8C69DA7B1F4C80CA006A81AC /* simplecv */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +154,6 @@
 			children = (
 				8C69DAA01F4C9CB8006A81AC /* Shiu58 */,
 				8C69DA7B1F4C80CA006A81AC /* simplecv */,
-				8C69DA5F1F4C6C9B006A81AC /* Shiu */,
 				8C69DAA61F4CA228006A81AC /* appShiu58 */,
 				8CBD33A41F4C5926006E0E0A /* Products */,
 				8C69DA971F4C8871006A81AC /* Frameworks */,
@@ -201,7 +188,6 @@
 				8C69DA871F4C80CA006A81AC /* cascadedetect.hpp in Headers */,
 				8C69DA9F1F4C9C95006A81AC /* Shiu58.hpp in Headers */,
 				8C69DA8F1F4C80CA006A81AC /* simplecv.hpp in Headers */,
-				8C69DA6B1F4C6C9B006A81AC /* Dect58UI.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

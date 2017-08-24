@@ -12,32 +12,34 @@
 #include <opencv2/core.hpp>
 #include "cascadedetect.hpp"
 
-const std::string RES("../res/");
+const std::string RES("/Users/zhongsifen/Work/Shiu58/res/");
 const std::string palm("haarcascades/palm.xml");
 class Shiu58 {
-	int status;
-	cv::CascadeClassifier cf;
+	int _status;
+	cv::CascadeClassifier _cf;
 	
-	cv::Mat f;
-	cv::Mat g;
-	cv::Mat h;
-	
-	float weight;
-	cv::Rect roi;
-	cv::Rect box;
+	cv::Mat _f;
+	cv::Mat _g;
+	cv::Mat _h;
 
+	int _level;
+	double _weight;
+	cv::Rect _roi;
+	cv::Rect _box;
+
+	cv::Mat _f_reset;
+	cv::Rect _roi_reset;
+	
 public:
-	Shiu58() { status = 0; setup(); }
-	bool setup(std::string filename = RES+palm);
-	bool run(cv::Mat& f);
+	Shiu58() { _status = 0; }
+	bool load(std::string filename = RES+palm);
+	bool setup(cv::Mat& frame);
+	bool run(cv::Mat& frame);
+	bool show(cv::Mat& frame);
 
-	bool detect(cv::Mat& g, cv::Rect& box);
-	bool detect_list(cv::Mat& g, std::vector<cv::Rect>& list);
-	bool detect_roi(cv::Mat& g, cv::Rect& roi, cv::Rect& box);
-	
+	bool cvt(cv::Mat& f, cv::Mat& g, cv::Mat& h);
 	bool detect(cv::Mat& g, cv::Rect& box, int& level, double& weight);
-
-	void show();
+//	bool show(cv::Mat& w, cv::Rect& roi, cv::Rect& box);
 };
 
 #endif /* Shiu58_hpp */
