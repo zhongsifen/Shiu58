@@ -36,17 +36,12 @@ Shiu58::run(Mat& frame) {
 
 bool
 Shiu58::cvt(Mat& f, Mat& g, Mat& h) {
-	/* Soften image */
-	cv::smooth(ctx->image, ctx->temp_image3, cv::_GAUSSIAN, 11, 11, 0, 0);
-	/* Remove some impulsive noise */
-	cv::Smooth(ctx->temp_image3, ctx->temp_image3, cv::_MEDIAN, 11, 11, 0, 0);
-	
-	cv::cvtColor(ctx->temp_image3, ctx->temp_image3, cv::_BGR2HSV);
 	Mat u(f.rows, f.cols, CV_32FC3);
 	cvtColor(f, u, COLOR_BGR2HSV);
 	std::vector<Mat> hsv;
 	split(u, hsv);
-	g = hsv[2];
+	blur(hsv[2], g, Size(3, 3));
+	medianBlur(g, g, 5);
 	h = hsv[0];
 	
 	return true;

@@ -37,7 +37,7 @@ class Shiu58 {
 	
 public:
 	Shiu58() { _status = 0; }
-	bool load(std::string filename = RES+fist);
+	bool load(std::string filename = RES+palm);
 	bool setup(cv::Mat& frame);
 	bool run(cv::Mat& frame);
 	bool show(cv::Mat& frame);
