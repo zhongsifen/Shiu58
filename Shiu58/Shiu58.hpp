@@ -10,6 +10,7 @@
 #define Shiu58_hpp
 
 #include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
 #include "cascadedetect.hpp"
 
 const std::string RES("/Users/zhongsifen/Work/Shiu58/res/");
@@ -26,6 +27,7 @@ class Shiu58 {
 	cv::Mat _f;
 	cv::Mat _g;
 	cv::Mat _h;
+	cv::Mat _mask;
 
 	int _level;
 	double _weight;
@@ -42,9 +44,17 @@ public:
 	bool run(cv::Mat& frame);
 	bool show(cv::Mat& frame);
 
-	bool cvt(cv::Mat& f, cv::Mat& g, cv::Mat& h);
+	bool cvt(cv::Mat& f, cv::Mat& g, cv::Mat& h, cv::Mat& mask);
 	bool detect(cv::Mat& g, cv::Rect& box, int& level, double& weight);
 //	bool show(cv::Mat& w, cv::Rect& roi, cv::Rect& box);
+	
+	bool show_mask() {
+		if (_mask.rows <= 0)	return false;
+		cv::imshow("mask", _mask);
+		cv::waitKey(1);
+		
+		return true;
+	}
 };
 
 #endif /* Shiu58_hpp */

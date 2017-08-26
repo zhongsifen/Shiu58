@@ -37,13 +37,13 @@ int main(int argc, const char * argv[]) {
 		ret = cap.read(f);		if (!ret) continue;
 		w = f.clone();
 		
+		shiu.show_mask();
 		ret = shiu.run(f);
-		
 		if (ret) {
 			shiu.show(w);
 		}
-		imshow("Shiu58", w);
-		key = waitKey(waittime);		if (key == 'q') break;
+//		imshow("Shiu58", w);
+//		key = waitKey(waittime);		if (key == 'q') break;
 	} while (1);
 
 	std::cout << "Hello, World!\n";

@@ -28,25 +28,37 @@ Shiu58::setup(Mat& frame) {
 bool
 Shiu58::run(Mat& frame) {
 	_f = frame;
-	cvt(_f, _g, _h);
+	cvt(_f, _g, _h, _mask);
 	bool ret = detect(_g, _box, _level, _weight);	if (!ret) return false;
 	
 	return true;
 }
 
 bool
-Shiu58::cvt(Mat& f, Mat& g, Mat& h) {
+Shiu58::cvt(Mat& f, Mat& g, Mat& h, Mat& mask) {
 	Mat u(f.rows, f.cols, CV_32FC3);
 	cvtColor(f, u, COLOR_BGR2HSV);
+	inRange(u, Scalar(0, 55, 0), Scalar(28, 175, 255), mask);
 	std::vector<Mat> hsv;
 	split(u, hsv);
 	blur(hsv[2], g, Size(3, 3));
 	medianBlur(g, g, 5);
 	h = hsv[0];
+//	inRange(h, Scalar(0), Scalar(28), mask);
 	
 	return true;
 }
+#if 0
+cv::InRangeS(ctx->temp_image3,
+			 cv::Scalar(0, 55, 90, 255),
+			 cv::Scalar(28, 175, 230, 255),
+			 ctx->thr_image);
 
+/* Apply morphological opening */
+cv::MorphologyEx(ctx->thr_image, ctx->thr_image, NULL, ctx->kernel,
+				 cv::_MOP_OPEN, 1);
+cv::Smooth(ctx->thr_image, ctx->thr_image, cv::_GAUSSIAN, 3, 3, 0, 0);
+#endif
 bool
 Shiu58::detect(Mat& g, Rect& box, int& level, double& weight) {
 	if (_status < 1) return false;
@@ -80,47 +92,3 @@ Shiu58::show(Mat& frame) {
 	
 	return true;
 }
-
-#if 0
-
-void
-Shiu58::show_point(Mat& im, Point& pt, Scalar color)
-{
-	const int radius=4;
-	const int thickness=1;
-	
-	circle(im, pt, radius, color, thickness);
-	
-	return true;
-}
-
-bool
-Shiu58::show_points(Mat& im, std::vector<Point>& points, Scalar color)
-{
-	const int radius=2;
-	const int thickness=1;
-	
-	int size = (int)points.size();
-	for (int i = 0; i < size; i++) {
-		circle(im, points[i], radius, color, thickness);
-	}
-	
-	return true;
-}
-
-bool
-Shiu58::show_points(Mat& im, Mat& points, Scalar color)
-{
-	const int radius=2;
-	const int thickness=1;
-	
-	int n = (int)points.total() / 2;
-	double* s = (double*)points.data;
-	for (int i = 0; i < n; i++) {
-		circle(im, Point(s[i], s[n+i]), radius, color, thickness);
-	}
-	
-	return true;
-}
-
-#endif
