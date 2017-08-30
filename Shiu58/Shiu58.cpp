@@ -7,16 +7,47 @@
 //
 
 #include "Shiu58.hpp"
-using namespace std;
+#include <opencv2/imgproc.hpp>
 using namespace cv;
+using namespace std;
 
-bool
-Shiu58::load(string filename) {
-	_status = 0;
-	bool ret = _cf.load(filename);	if (!ret) return false;
-	_status = 1;
+static void refineSegments(const Mat& img, Mat& mask, Mat& dst)
+{
+	int niters = 3;
 	
-	return true;
+	vector<vector<Point> > contours;
+	vector<Vec4i> hierarchy;
+	
+	Mat temp;
+	
+	dilate(mask, temp, Mat(), Point(-1,-1), niters);
+	erode(temp, temp, Mat(), Point(-1,-1), niters*2);
+	dilate(temp, temp, Mat(), Point(-1,-1), niters);
+	
+	findContours( temp, contours, hierarchy, RETR_CCOMP, CHAIN_APPROX_SIMPLE );
+	
+	dst = Mat::zeros(img.size(), CV_8UC3);
+	
+	if( contours.size() == 0 )
+		return;
+	
+	// iterate through all the top-level contours,
+	// draw each connected component with its own random color
+	int idx = 0, largestComp = 0;
+	double maxArea = 0;
+	
+	for( ; idx >= 0; idx = hierarchy[idx][0] )
+	{
+		const vector<Point>& c = contours[idx];
+		double area = fabs(contourArea(Mat(c)));
+		if( area > maxArea )
+		{
+			maxArea = area;
+			largestComp = idx;
+		}
+	}
+	Scalar color( 0, 0, 255 );
+	drawContours( dst, contours, largestComp, color); // FILLED, LINE_8, hierarchy );
 }
 
 bool
@@ -28,8 +59,9 @@ Shiu58::setup(Mat& frame) {
 bool
 Shiu58::run(Mat& frame) {
 	_f = frame;
-	cvt(_f, _g, _h, _mask);
-	bool ret = detect(_g, _box, _level, _weight);	if (!ret) return false;
+//	cvt(_f, _g, _h);
+	_bgs.apply(_f, _mask, _fgimg, _bgimg);
+//	refineSegments(_fgimg, _mask, _fgimg);
 	
 	return true;
 }
@@ -48,47 +80,18 @@ Shiu58::cvt(Mat& f, Mat& g, Mat& h, Mat& mask) {
 	
 	return true;
 }
-#if 0
-cv::InRangeS(ctx->temp_image3,
-			 cv::Scalar(0, 55, 90, 255),
-			 cv::Scalar(28, 175, 230, 255),
-			 ctx->thr_image);
-
-/* Apply morphological opening */
-cv::MorphologyEx(ctx->thr_image, ctx->thr_image, NULL, ctx->kernel,
-				 cv::_MOP_OPEN, 1);
-cv::Smooth(ctx->thr_image, ctx->thr_image, cv::_GAUSSIAN, 3, 3, 0, 0);
-#endif
-bool
-Shiu58::detect(Mat& g, Rect& box, int& level, double& weight) {
-	if (_status < 1) return false;
-
-	Mat h = g;
-	std::vector<Rect> list;
-	std::vector<int> level_list;
-	std::vector<double> weight_list;
-	_cf.detectMultiScale(h, list, level_list, weight_list, 1.1, 3, 0, Size(), Size(), true);
-	int n = (int)list.size();		if (n < 1) return false;
-	box = list[0];
-	level = level_list[0];
-	weight = weight_list[0];
-	for (int i=1; i<n; i++) {
-		if (weight_list[i] > weight) {
-			box = list[i];
-			level = level_list[i];
-			weight = weight_list[i];
-		}
-	}
-	
-	_status = 2;
-	
-	return true;
-}
 
 bool
 Shiu58::show(Mat& frame) {
 	rectangle(frame, _box, Scalar(0xFF, 0x00, 0xFF));
 //	rectangle(frame, _roi, Scalar(0x00, 0x00, 0xFF));
+	
+	return true;
+}
+
+bool
+Shiu58::show_bgs() {
+	imshow("ShiuBgs", _fgimg);
 	
 	return true;
 }

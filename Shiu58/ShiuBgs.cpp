@@ -8,23 +8,17 @@
 
 #include "ShiuBgs.hpp"
 #include <opencv2/imgproc.hpp>
-#include <opencv2/video/background_segm.hpp>
 using namespace cv;
 
-namespace ShiuBgs {
-	Ptr<BackgroundSubtractor> bg_model =
+bool ShiuBgs::apply(Mat& img, Mat& mask, Mat& fgimg, Mat& bgimg) {
+	_mog2->apply(img, mask, 0.5);
+	_mog2->getBackgroundImage(bgimg);
 
-	createBackgroundSubtractorMOG2().dynamicCast<BackgroundSubtractor>();
-//	createBackgroundSubtractorKNN().dynamicCast<BackgroundSubtractor>();
+	GaussianBlur(mask, mask, Size(5, 5), 3.5);
+	threshold(mask, mask, 10, 255, THRESH_BINARY);
+	erode(mask, mask, Mat(), Point(-1,-1), 3);
+	fgimg = Scalar::all(0);
+	img.copyTo(fgimg, mask);
 	
-	bool bg(Mat& img, Mat& fgmask, Mat& fgimg, Mat& bgimg) {
-		bg_model->apply(img, fgmask, 0.5);
-		GaussianBlur(fgmask, fgmask, Size(5, 5), 3.5);
-		threshold(fgmask, fgmask, 10, 255, THRESH_BINARY);
-		fgimg = Scalar::all(0);
-		img.copyTo(fgimg, fgmask);
-		bg_model->getBackgroundImage(bgimg);
-		
-		return true;
-	}
+	return true;
 }

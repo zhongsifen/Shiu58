@@ -9,25 +9,22 @@
 #ifndef Shiu58_hpp
 #define Shiu58_hpp
 
+#include "ShiuDetect.hpp"
+#include "ShiuBgs.hpp"
 #include <opencv2/core.hpp>
-#include <opencv2/highgui.hpp>
-#include "cascadedetect.hpp"
-
-const std::string RES("/Users/zhongsifen/Work/Shiu58/res/");
-const std::string palm("haarcascades/palm.xml");
-const std::string palm_closed("haarcascades/closed_frontal_palm.xml");
-const std::string face("haarcascades/haarcascade_frontalface_alt2.xml");
-const std::string gest("haarcascades/aGest.xml");
-const std::string fist("haarcascades/fist.xml");
 
 class Shiu58 {
 	int _status;
-	cv::CascadeClassifier _cf;
+
+	ShiuDetect _detect;
+	ShiuBgs _bgs;
 	
 	cv::Mat _f;
 	cv::Mat _g;
 	cv::Mat _h;
 	cv::Mat _mask;
+	cv::Mat _fgimg;
+	cv::Mat _bgimg;
 
 	int _level;
 	double _weight;
@@ -39,22 +36,13 @@ class Shiu58 {
 	
 public:
 	Shiu58() { _status = 0; }
-	bool load(std::string filename = RES+palm);
 	bool setup(cv::Mat& frame);
 	bool run(cv::Mat& frame);
 	bool show(cv::Mat& frame);
 
 	bool cvt(cv::Mat& f, cv::Mat& g, cv::Mat& h, cv::Mat& mask);
-	bool detect(cv::Mat& g, cv::Rect& box, int& level, double& weight);
-//	bool show(cv::Mat& w, cv::Rect& roi, cv::Rect& box);
+	bool show_bgs();
 	
-	bool show_mask() {
-		if (_mask.rows <= 0)	return false;
-		cv::imshow("mask", _mask);
-		cv::waitKey(1);
-		
-		return true;
-	}
 };
 
 #endif /* Shiu58_hpp */
