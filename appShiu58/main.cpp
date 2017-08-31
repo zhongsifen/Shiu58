@@ -13,11 +13,13 @@
 #include <opencv2/core.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
-#include <opencv2/imgcodec.hpp>
+#include <opencv2/imgcodecs.hpp>
 #include <opencv2/videoio.hpp>
 using namespace cv;
 
 const std::string _data("/Users/zhongsifen/Work/Shiu58/data/");
+const std::string _name("20170830172101.mp4");
+const std::string _path(_data + _name);
 
 int main(int argc, const char * argv[]) {
 	bool ret = false;
@@ -31,9 +33,9 @@ int main(int argc, const char * argv[]) {
 //	Rect box;
 //	int level=0;
 //	double weight=0;
-	const int waittime = 1;
+	const int waittime = 0;
 	VideoCapture cap;
-	cap.open(_data + "20170830172101.mp4");
+	cap.open(_path);
 	/*cap.open(0);*/		if (!cap.isOpened()) return -1;
 	ret = cap.read(f);		if (!ret) return -1;
 
@@ -41,11 +43,11 @@ int main(int argc, const char * argv[]) {
 		ret = cap.read(f);		if (!ret) continue;
 		w = f.clone();
 
-		shiu.run(f);
-		shiu.show_bgs();
-//		imshow("shiu", w);
+//		shiu.run(f);
+//		shiu.show_bgs();
+		imshow("shiu", w);
 		key = waitKey(waittime);		if (key == 'q') break;
-		if (key == 's') imwrite("frame.png", f);
+		if (key == 's') imwrite(_data + "frame.png", f);
 	} while (1);
 
 	std::cout << "Hello, World!\n";
