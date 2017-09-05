@@ -1,19 +1,19 @@
 //
-//  ShiuSkin.cpp
+//  ShiuProc.cpp
 //  Shiu58
 //
 //  Created by SIFEN ZHONG on 1/9/2017.
 //  Copyright © 2017 ___ZHONGSIFEN___. All rights reserved.
 //
 
-#include "ShiuSkin.hpp"
+#include "ShiuProc.hpp"
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
 using namespace cv;
 
 bool
-ShiuSkin::color(Mat& f, Mat& mask) {
+ShiuProc::color(Mat& f, Mat& mask) {
 	mask.create(f.rows, f.cols, CV_8UC1);
 	mask = Scalar(0xFF);
 	Mat bgr[3], r, g, b;
@@ -44,7 +44,7 @@ ShiuSkin::color(Mat& f, Mat& mask) {
 }
 
 bool
-ShiuSkin::density(Mat& img, Mat& imgFilter)
+ShiuProc::density(Mat& img, Mat& imgFilter)
 {
 	Mat sum;
 	sum = Mat::zeros(img.rows, img.cols, CV_8UC1);
@@ -139,7 +139,7 @@ ShiuSkin::density(Mat& img, Mat& imgFilter)
 }
 
 bool
-ShiuSkin::geometry(Mat& img, Mat& imgFilter) {
+ShiuProc::geometry(Mat& img, Mat& imgFilter) {
 	int erode, dilate;
 	for (int i = 4; i < (img.rows - 4); i+=4) //Cycle over horizontal clusters
 	{
@@ -200,7 +200,7 @@ ShiuSkin::geometry(Mat& img, Mat& imgFilter) {
 }
 
 bool
-ShiuSkin::finger(Mat& f, Mat& mask, std::vector<Point>& contour) {
+ShiuProc::finger(Mat& f, Mat& mask, std::vector<Point>& contour) {
 	std::vector<std::vector<Point>> contours;
 	std::vector<Vec4i> hierarchy;
 	findContours(mask, contours, hierarchy, RETR_TREE, CHAIN_APPROX_NONE);

@@ -8,7 +8,7 @@
 
 #include "Shiu58.hpp"
 #include "ShiuBgs.hpp"
-#include "ShiuSkin.hpp"
+#include "ShiuProc.hpp"
 
 #include <iostream>
 #include <opencv2/core.hpp>
@@ -27,10 +27,10 @@ int main_file(int argc, const char * argv[]) {
 	Mat mask;
 	std::vector<Point> contour;
 	
-	ShiuSkin::color(f, mask);
-	ShiuSkin::density(f, mask);
-	ShiuSkin::geometry(f, mask);
-	ShiuSkin::finger(f, mask, contour);
+	ShiuProc::color(f, mask);
+	ShiuProc::density(f, mask);
+	ShiuProc::geometry(f, mask);
+	ShiuProc::finger(f, mask, contour);
 	Mat w(f.rows, f.cols, f.type());
 	w = Scalar(0xFF, 0xFF, 0xFF);
 	f.copyTo(w, mask);
@@ -61,16 +61,16 @@ int main(int argc, const char * argv[]) {
 	ret = cap.read(f);		if (!ret) return -1;
 
 	VideoWriter rec;
-	rec.open(_data + "rec264.mov", VideoWriter::fourcc('X','2','6','4'), 25.0, Size(f.cols, f.rows));	if (!rec.isOpened()) return  -1;
+	rec.open(_data + "rec264.avi", VideoWriter::fourcc('X','2','6','4'), 25.0, Size(f.cols, f.rows));	if (!rec.isOpened()) return  -1;
 	do {
 		ret = cap.read(f);		if (!ret) break;
 		w = f.clone();
 		z = f.clone();
 
-		ShiuSkin::color(f, mask);
-		ShiuSkin::density(f, mask);
-		ShiuSkin::geometry(f, mask);
-		ShiuSkin::finger(f, mask, contour);
+		ShiuProc::color(f, mask);
+		ShiuProc::density(f, mask);
+		ShiuProc::geometry(f, mask);
+		ShiuProc::finger(f, mask, contour);
 		bitwise_not(mask, notmask);
 		w = Scalar(0xFF, 0xFF, 0xFF);
 		z = Scalar(0x00);
