@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Shiu58.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>appShiu58.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>simplecv.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>8C69DA5A1F4C6C52006A81AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8C69DA761F4C8036006A81AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8C69DAA41F4CA228006A81AC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8CBD33A21F4C5926006E0E0A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8CCDEB701F4F3C5600EC6498</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
