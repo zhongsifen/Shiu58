@@ -26,11 +26,12 @@ int main_file(int argc, const char * argv[]) {
 	Mat f = imread(_data + "frame.png");
 	Mat mask;
 	std::vector<Point> contour;
+	std::vector<Point> hull;
 	
 	ShiuProc::color(f, mask);
 	ShiuProc::density(f, mask);
 	ShiuProc::geometry(f, mask);
-	ShiuProc::finger(f, mask, contour);
+	ShiuProc::finger(f, mask, contour, hull);
 	Mat w(f.rows, f.cols, f.type());
 	w = Scalar(0xFF, 0xFF, 0xFF);
 	f.copyTo(w, mask);
@@ -48,6 +49,8 @@ int main(int argc, const char * argv[]) {
 	
 	Mat f, g, h, w, z, mask, notmask;
 	std::vector<Point> contour;
+	std::vector<Point> hull;
+	
 	std::vector<Mat> hsl;
 	
 //	Rect box;
@@ -55,8 +58,8 @@ int main(int argc, const char * argv[]) {
 //	double weight=0;
 	const int waittime = 1;
 	VideoCapture cap;
-	cap.open(_path);
-//	cap.open(0);
+//	cap.open(_path);
+	cap.open(0);
 	if (!cap.isOpened()) return -1;
 	ret = cap.read(f);		if (!ret) return -1;
 
@@ -70,15 +73,19 @@ int main(int argc, const char * argv[]) {
 		ShiuProc::color(f, mask);
 		ShiuProc::density(f, mask);
 		ShiuProc::geometry(f, mask);
-		ShiuProc::finger(f, mask, contour);
-		bitwise_not(mask, notmask);
-		w = Scalar(0xFF, 0xFF, 0xFF);
-		z = Scalar(0x00);
-		f.copyTo(w, mask);
-		f.copyTo(z, notmask);
+		ShiuProc::finger(f, mask, contour, hull);
+		ShiuIO::show_point_list(w, hull);
+		
+//		bitwise_not(mask, notmask);
+//		w = Scalar(0xFF, 0xFF, 0xFF);
+//		z = Scalar(0x00);
+//		f.copyTo(w, mask);
+//		f.copyTo(z, notmask);
+		
 //		shiu.run(f);
 //		shiu.show_bgs();
-		rec.write(w);
+
+//		rec.write(w);
 		imshow("mask", w);
 //		imshow("not", z);
 		key = waitKey(waittime);		if (key == 27) break;

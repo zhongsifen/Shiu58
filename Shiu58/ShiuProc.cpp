@@ -201,27 +201,20 @@ ShiuProc::geometry(Mat& img, Mat& imgFilter) {
 
 bool
 ShiuProc::finger(Mat& f, Mat& mask, std::vector<Point>& contour, std::vector<Point>& hull) {
-	std::vector<std::vector<Point>> contours;
+	std::vector<std::vector<Point>> contour_list;
 	std::vector<Vec4i> hierarchy;
-	findContours(mask, contours, hierarchy, RETR_TREE, CHAIN_APPROX_NONE);
-	if (contours.size() < 1) return false;
-	int idx = 0;
-	contour = contours[idx];
-	double area = contourArea(contour);
-	drawContours(f, contours, 0, Scalar(0xFF, 0x00, 0xFF));
-	for (int i=1; i<contours.size(); ++i) {
-		double a = contourArea(contours[i]);
-		if (a > area) {
-			idx = i;
-			area = a;
-		}
-//		drawContours(f, contours, i, Scalar(0xFF, 0x00, 0xFF));
+	findContours(mask, contour_list, hierarchy, RETR_TREE, CHAIN_APPROX_NONE);
+	int size =	contour_list.size();	if (size < 1) return false;
+	std::vector<double> area_list(size);
+	std::vector<std::vector<int>> hull_list(size);
+	std::vector<std::vector<Vec4i>> defect_list(size);
+	for (int i=0; i<size; ++i) {
+		area_list[i] = contourArea(contour_list[i]);
+		convexHull(contour_list[i], hull_list[i]);
+		if (hull_list[i].size() < 3) continue;
+		convexityDefects(contour_list[i], hull_list[i], defect_list[i]);
 	}
-	contour = contours[idx];
-	convexHull(contour, hull);
 	
-	drawContours(f, contours, idx, Scalar(0xFF, 0x00, 0xFF));
-		
 	return true;
 }
 

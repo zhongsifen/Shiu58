@@ -13,6 +13,14 @@
 #include "ShiuBgs.hpp"
 #include <opencv2/core.hpp>
 
+namespace ShiuIO {
+	const cv::Scalar color_point = cv::Scalar(0xF0, 0x00, 0xF0);
+	
+	void show_point(cv::Mat& show, cv::Point& point, int radius=4, const cv::Scalar& color=color_point);
+	void show_point_list(cv::Mat& show, std::vector<cv::Point>& point_list, int radius=2, const cv::Scalar& color=color_point);
+	
+}
+
 class Shiu58 {
 	int _status;
 

@@ -11,6 +11,18 @@
 using namespace cv;
 using namespace std;
 
+void
+ShiuIO::show_point(cv::Mat &show, cv::Point& point, int radius, const cv::Scalar& color) {
+	circle(show, point, radius, color);
+}
+
+void
+ShiuIO::show_point_list(cv::Mat& show, std::vector<cv::Point>& point_list, int radius, const cv::Scalar& color) {
+	for (int i=0; i<point_list.size(); ++i) {
+		show_point(show, point_list[i], radius, color);
+	}
+}
+
 static void refineSegments(const Mat& img, Mat& mask, Mat& dst)
 {
 	int niters = 3;
