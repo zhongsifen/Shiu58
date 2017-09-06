@@ -200,7 +200,7 @@ ShiuProc::geometry(Mat& img, Mat& imgFilter) {
 }
 
 bool
-ShiuProc::finger(Mat& f, Mat& mask, std::vector<Point>& contour) {
+ShiuProc::finger(Mat& f, Mat& mask, std::vector<Point>& contour, std::vector<Point>& hull) {
 	std::vector<std::vector<Point>> contours;
 	std::vector<Vec4i> hierarchy;
 	findContours(mask, contours, hierarchy, RETR_TREE, CHAIN_APPROX_NONE);
@@ -213,14 +213,15 @@ ShiuProc::finger(Mat& f, Mat& mask, std::vector<Point>& contour) {
 		double a = contourArea(contours[i]);
 		if (a > area) {
 			idx = i;
-			contour = contours[idx];
 			area = a;
 		}
-		drawContours(f, contours, i, Scalar(0xFF, 0x00, 0xFF));
+//		drawContours(f, contours, i, Scalar(0xFF, 0x00, 0xFF));
 	}
+	contour = contours[idx];
+	convexHull(contour, hull);
 	
-//	drawContours(f, contours, idx, Scalar(0xFF, 0x00, 0xFF));
-	
+	drawContours(f, contours, idx, Scalar(0xFF, 0x00, 0xFF));
+		
 	return true;
 }
 
