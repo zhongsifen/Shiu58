@@ -21,7 +21,7 @@ namespace ShiuProc {
 	bool density(cv::Mat& img, cv::Mat& imgFilter);
 	bool geometry(cv::Mat& img, cv::Mat& imgFilter);
 	
-	bool finger(cv::Mat& f, cv::Mat& mask, std::vector<cv::Point>& contour, std::vector<cv::Point>& hull);
+	bool finger(cv::Mat& f, cv::Mat& mask, std::vector<cv::Point>& contour, std::vector<int>& hull);
 }
 
 #endif /* ShiuProc_hpp */

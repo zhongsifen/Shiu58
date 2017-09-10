@@ -22,26 +22,32 @@ const std::string _data("/Users/zhongsifen/Work/Shiu58/data/");
 const std::string _name("20170830172101.mp4");
 const std::string _path(_data + _name);
 
-int main_file(int argc, const char * argv[]) {
-	Mat f = imread(_data + "frame.png");
-	Mat mask;
+int main(int argc, const char * argv[]) {
+	Mat f = imread(_data + "cap1504922669.png");
+	Mat mask, notm;
 	std::vector<Point> contour;
-	std::vector<Point> hull;
+	std::vector<int> hull;
 	
 	ShiuProc::color(f, mask);
-	ShiuProc::density(f, mask);
-	ShiuProc::geometry(f, mask);
-	ShiuProc::finger(f, mask, contour, hull);
+//	ShiuProc::density(f, mask);
+//	ShiuProc::geometry(f, mask);
+//	ShiuProc::finger(f, mask, contour, hull);
+	bitwise_not(mask, notm);
 	Mat w(f.rows, f.cols, f.type());
-	w = Scalar(0xFF, 0xFF, 0xFF);
+	Mat z(f.rows, f.cols, f.type());
+	w = Scalar(0x00, 0x00, 0x00);
+	z = Scalar(0xFF, 0xFF, 0xFF);
 	f.copyTo(w, mask);
-	imshow("frame", w);
+	f.copyTo(z, notm);
+	imshow("w", w);
+	imshow("z", z);
 	waitKey();
+	imwrite(_data + "znot1504922669.png", z);
 	
 	return 0;
 }
 
-int main(int argc, const char * argv[]) {
+int main_(int argc, const char * argv[]) {
 	bool ret = false;
 	char key = '\0';
 
@@ -49,7 +55,7 @@ int main(int argc, const char * argv[]) {
 	
 	Mat f, g, h, w, z, mask, notmask;
 	std::vector<Point> contour;
-	std::vector<Point> hull;
+	std::vector<int> hull;
 	
 	std::vector<Mat> hsl;
 	
@@ -69,24 +75,30 @@ int main(int argc, const char * argv[]) {
 		ret = cap.read(f);		if (!ret) break;
 		w = f.clone();
 		z = f.clone();
-
+		w = Scalar(0xFF, 0xFF, 0xFF);
+		z = Scalar(0x00);
+		f.copyTo(w, mask);
+		f.copyTo(z, notmask);
+		
+		blur(f, f, Size(5, 5));
 		ShiuProc::color(f, mask);
 		ShiuProc::density(f, mask);
 		ShiuProc::geometry(f, mask);
-		ShiuProc::finger(f, mask, contour, hull);
-		ShiuIO::show_point_list(w, hull);
+		ShiuProc::finger(w, mask, contour, hull);
+
+//		std::vector<Point> finger(hull.size());
+//		for (int i=0; i<finger.size(); ++i) {
+//			finger[i] = contour[hull[i]];
+//		}
+//		ShiuIO::showPointLine(w, finger);
 		
 //		bitwise_not(mask, notmask);
-//		w = Scalar(0xFF, 0xFF, 0xFF);
-//		z = Scalar(0x00);
-//		f.copyTo(w, mask);
-//		f.copyTo(z, notmask);
 		
 //		shiu.run(f);
 //		shiu.show_bgs();
 
 //		rec.write(w);
-		imshow("mask", w);
+		imshow("palm", w);
 //		imshow("not", z);
 		key = waitKey(waittime);		if (key == 27) break;
 //		if (key == 's') imwrite(_data + "frame.png", f);

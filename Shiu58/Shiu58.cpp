@@ -11,15 +11,25 @@
 using namespace cv;
 using namespace std;
 
-void
-ShiuIO::show_point(cv::Mat &show, cv::Point& point, int radius, const cv::Scalar& color) {
-	circle(show, point, radius, color);
+float
+ShiuX::dist(Point p0, Point p1) {
+	float dx = p1.x - p0.x;
+	float dy = p1.y - p0.y;
+	return sqrtf(dx*dx + dy*dy);
 }
 
 void
-ShiuIO::show_point_list(cv::Mat& show, std::vector<cv::Point>& point_list, int radius, const cv::Scalar& color) {
+ShiuX::showPoint(cv::Mat& img, cv::Point& point, int radius, const cv::Scalar& color) {
+	circle(img, point, radius, color);
+}
+					  
+void
+ShiuX::showPointLine(cv::Mat& show, std::vector<cv::Point>& point_list, int radius, const cv::Scalar& colorPoint, const cv::Scalar& colorLine) {
 	for (int i=0; i<point_list.size(); ++i) {
-		show_point(show, point_list[i], radius, color);
+		circle(show, point_list[i], radius, colorPoint);
+	}
+	for (int i=1; i<point_list.size(); ++i) {
+		line(show, point_list[i-1], point_list[i], colorLine);
 	}
 }
 
