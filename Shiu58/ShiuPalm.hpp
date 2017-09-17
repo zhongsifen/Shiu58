@@ -25,6 +25,7 @@ class ShiuPalm {
 	ShiuFinger _finger;
 public:
 	bool init(std::vector<cv::Point>& contour);
+	double cert();
 	bool show(cv::Mat& img);
 	
 };

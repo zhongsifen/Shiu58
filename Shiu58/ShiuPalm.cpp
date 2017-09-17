@@ -20,6 +20,16 @@ ShiuPalm::init(std::vector<Point>& contour) {
 	return true;
 }
 
+double
+ShiuPalm::cert() {
+	if (_area > 64*64) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
 bool
 ShiuPalm::show(cv::Mat& img) {
 	for (int i=0; i<_contour.size(); ++i) {

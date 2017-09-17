@@ -29,6 +29,8 @@ public:
 	bool load(std::string filename = RES+palm);
 	bool detect(cv::Mat& g, std::vector<cv::Rect>& box_list, std::vector<int>& level_list, std::vector<double>& weight_list);
 	bool detect(cv::Mat& g, cv::Rect& box, int& level, double& weight);
+	bool show(cv::Mat& img, cv::Rect& box);
+	bool show(cv::Mat& img, std::vector<cv::Rect>& box_list);
 };
 
 #endif /* ShiuDetect_hpp */

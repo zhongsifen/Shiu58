@@ -55,3 +55,23 @@ ShiuDetect::detect(Mat& g, Rect& box, int& level, double& weight) {
 	
 	return true;
 }
+
+bool
+ShiuDetect::show(cv::Mat &img, cv::Rect& box) {
+	circle(img, (box.tl() + box.br())/2, 2, Scalar(0x00, 0x00, 0xF0));
+	rectangle(img, box, Scalar(0x00, 0x00, 0xF0));
+	
+	return true;
+}
+
+bool
+ShiuDetect::show(cv::Mat &img, std::vector<cv::Rect>& box_list) {
+	int size = (int)box_list.size();
+	for (int i=0; i<size; ++i) {
+		Rect box = box_list[i];
+		circle(img, (box.tl() + box.br())/2, 2, Scalar(0x00, 0x00, 0xF0));
+		rectangle(img, box, Scalar(0x00, 0x00, 0xF0));
+	}
+	
+	return true;
+}
