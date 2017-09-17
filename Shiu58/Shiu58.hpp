@@ -9,8 +9,6 @@
 #ifndef Shiu58_hpp
 #define Shiu58_hpp
 
-#include "ShiuDetect.hpp"
-#include "ShiuBgs.hpp"
 #include <opencv2/core.hpp>
 
 namespace ShiuX {
@@ -27,9 +25,6 @@ namespace ShiuX {
 
 class Shiu58 {
 	int _status;
-
-	ShiuDetect _detect;
-	ShiuBgs _bgs;
 	
 	cv::Mat _f;
 	cv::Mat _g;

@@ -81,9 +81,6 @@ Shiu58::setup(Mat& frame) {
 bool
 Shiu58::run(Mat& frame) {
 	_f = frame;
-//	cvt(_f, _g, _h);
-	_bgs.apply(_f, _mask, _fgimg, _bgimg);
-//	refineSegments(_fgimg, _mask, _fgimg);
 	
 	return true;
 }
@@ -107,13 +104,6 @@ bool
 Shiu58::show(Mat& frame) {
 	rectangle(frame, _box, Scalar(0xFF, 0x00, 0xFF));
 //	rectangle(frame, _roi, Scalar(0x00, 0x00, 0xFF));
-	
-	return true;
-}
-
-bool
-Shiu58::show_bgs() {
-	imshow("ShiuBgs", _fgimg);
 	
 	return true;
 }
