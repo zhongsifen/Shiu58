@@ -321,7 +321,7 @@ void HOGDescriptor::computeGradient(const Mat& img, Mat& grad, Mat& qangle,
     if (cn == 3)
     {
         int end = gradsize.width + 2;
-        xmap -= 1, x = 0;
+		xmap -= 1; x = 0;
 #if CV_SSE2
         __m128i ithree = _mm_set1_epi32(3);
         for ( ; x <= end - 4; x += 4)
@@ -1162,7 +1162,7 @@ void HOGCache::normalizeBlockHistogram(float* _hist) const
         sum += hist[i]*hist[i];
 
     float scale = 1.f/(std::sqrt(sum)+sz*0.1f), thresh = (float)descriptor->L2HysThreshold;
-    i = 0, sum = 0.0f;
+	i = 0; sum = 0.0f;
 
 #if CV_SSE2
     __m128 _scale = _mm_set1_ps(scale);
@@ -1228,7 +1228,7 @@ void HOGCache::normalizeBlockHistogram(float* _hist) const
         sum += hist[i]*hist[i];
     }
 
-    scale = 1.f/(std::sqrt(sum)+1e-3f), i = 0;
+	scale = 1.f/(std::sqrt(sum)+1e-3f); i = 0;
 #if CV_SSE2
     __m128 _scale2 = _mm_set1_ps(scale);
     for ( ; i <= sz - 4; i += 4)

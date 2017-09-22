@@ -7,8 +7,8 @@
 //
 
 #include "ShiuProc.hpp"
-#include "ShiuPalm.hpp"
-#include "ShiuFinger.hpp"
+#include "Shiu.hpp"
+#include "ShiuCc.hpp"
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
@@ -37,24 +37,36 @@ ShiuProc::process(Mat& f, Mat& mask) {
 	
 	morphologyEx(mask, mask, MORPH_OPEN, getStructuringElement(MORPH_ELLIPSE, Size(5, 5)));
 	blur(mask, mask, Size(3, 3));
-	
+
+	Mat label;
+	Mat stats;
+	Mat centroids;
+	Mat showcc;
+	Mat tmp(mask.size(), CV_8UC1);
+	int n = connectedComponentsWithStats(mask, label, stats, centroids);
+	for (int i=1; i<n; ++i) {
+		int area = stats.at<int>(i, CC_STAT_AREA);
+		if (area < 16*16) {
+			compare(label, i, tmp, CMP_EQ);
+			label.setTo(0, tmp);
+		}
+	}
+	compare(label, 0, mask, CMP_GT);
+	ShuiCc::show(label, n, showcc);
+	imshow("connected components", showcc);
+
 	Mat w;
 	f.copyTo(w, mask);
 
 	std::vector<std::vector<Point>> contours;
 	std::vector<cv::Vec4i> hierarchy;
-	findContours(mask, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE);
+	findContours(label, contours, hierarchy, RETR_FLOODFILL, CHAIN_APPROX_SIMPLE);
 	int size = (int)contours.size();
-	std::vector<ShiuPalm> palms(size);
-	std::vector<ShiuFinger> fingers(size);
+	std::vector<Shiu> shius(size);
 	
 	for (int i=0; i<size; ++i) {
-		palms[i].init(contours[i]);
-		if (palms[i].cert() < 0.5) continue;
-		palms[i].show(w);
-		
-		fingers[i].init(contours[i]);
-		fingers[i].show(w);
+		shius[i].setContour(contours[i]);
+		shius[i].show(w);
 	}
 	imshow("fingers", w);
 	

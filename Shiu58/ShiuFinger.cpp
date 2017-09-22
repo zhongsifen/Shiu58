@@ -9,7 +9,7 @@
 #include "ShiuFinger.hpp"
 using namespace cv;
 
-float _dist(Point p0, Point p1) {
+float _distance(Point p0, Point p1) {
 	float dx = p1.x - p0.x;
 	float dy = p1.y - p0.y;
 	return sqrtf(dx*dx + dy*dy);
@@ -31,7 +31,7 @@ ShiuFinger::show(cv::Mat& img) {
 	for (int i=0; i<_defect.size(); ++i) {
 		Point p0 = _contour[_defect[i][0]];
 		Point p1 = _contour[_defect[i][1]];
-		float width = _dist(p0, p1);
+		float width = _distance(p0, p1);
 		float depth = (float)_defect[i][2];
 		if (depth > width*2) {
 			circle(img, _contour[_defect[i][0]], 3, Scalar(0x00, 0x00, 0xF0));

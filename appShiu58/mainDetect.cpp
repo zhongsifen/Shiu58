@@ -21,9 +21,9 @@ const std::string _data("/Users/zhongsifen/Work/Shiu58/data/");
 const std::string _name("20170915140730.mp4");
 const std::string _path(_data + _name);
 
-#define WITH_FILE
+//#define WITH_FILE
 
-int main_detect(int argc, const char * argv[]) {
+int mainDetect(int argc, const char * argv[]) {
 	bool ret = false;
 	char key = '\0';
 
@@ -57,7 +57,7 @@ int main_detect(int argc, const char * argv[]) {
 	do {
 		ret = cap.read(f);		if (!ret) break;
 		
-		medianBlur(f, f, 11);
+		medianBlur(f, f, 5);
 		
 		Mat bgr[3], r, g, b;
 		split(f, bgr);

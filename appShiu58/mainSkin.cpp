@@ -44,9 +44,10 @@ int mainSkin(int argc, const char * argv[]) {
 	VideoWriter rec;
 	rec.open(_data + "rec264.avi", VideoWriter::fourcc('X','2','6','4'), 25.0, Size(f.cols, f.rows));	if (!rec.isOpened()) return  -1;
 #endif
-	
+
 	while (true) {
 		ret = cap.read(f);		if (!ret) break;
+		pyrDown(f, f);
 		ShiuProc::process(f, mask);
 		
 		w = f.clone();

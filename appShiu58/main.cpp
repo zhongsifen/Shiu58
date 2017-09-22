@@ -8,6 +8,8 @@
 
 #include <iostream>
 
+int mainDetect(int argc, const char * argv[]);
+int mainBgs(int argc, const char * argv[]);
 int mainSkin(int argc, const char * argv[]);
 
 int main(int argc, const char * argv[]) {

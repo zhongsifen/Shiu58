@@ -9,8 +9,6 @@
 #ifndef ShiuProc_hpp
 #define ShiuProc_hpp
 
-#include "ShiuPalm.hpp"
-#include "ShiuFinger.hpp"
 #include <opencv2/core.hpp>
 
 namespace ShiuProc {

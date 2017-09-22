@@ -9,9 +9,9 @@
 #ifndef Shiu58_hpp
 #define Shiu58_hpp
 
+#include <opencv2/core.hpp>
 #include "ShiuDetect.hpp"
 #include "ShiuBgs.hpp"
-#include <opencv2/core.hpp>
 
 namespace ShiuX {
 	const cv::Scalar _color_point = cv::Scalar(0xF0, 0x00, 0xF0);
