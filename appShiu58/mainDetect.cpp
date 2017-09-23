@@ -27,8 +27,6 @@ int mainDetect(int argc, const char * argv[]) {
 	bool ret = false;
 	char key = '\0';
 
-	Shiu58 shiu;
-	
 	Mat f, g, h, w, z, mask, notmask;
 	std::vector<Point> contour;
 	std::vector<int> hull;

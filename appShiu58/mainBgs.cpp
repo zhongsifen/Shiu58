@@ -8,7 +8,6 @@
 
 #include "Shiu58.hpp"
 #include "ShiuBgs.hpp"
-#include "ShiuProc.hpp"
 
 #include <iostream>
 #include <opencv2/core.hpp>

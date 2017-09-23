@@ -8,7 +8,6 @@
 
 #include "Shiu58.hpp"
 #include "ShiuBgs.hpp"
-#include "ShiuProc.hpp"
 
 #include <iostream>
 #include <opencv2/core.hpp>
@@ -31,6 +30,8 @@ int mainSkin(int argc, const char * argv[]) {
 	bool ret = false;
 	char key = '\0';
 	
+	Shiu58 shiu;
+	
 	Mat f, w, mask;
 	VideoCapture cap;
 #if defined(WITH_FILE)
@@ -47,13 +48,10 @@ int mainSkin(int argc, const char * argv[]) {
 
 	while (true) {
 		ret = cap.read(f);		if (!ret) break;
-		pyrDown(f, f);
-		ShiuProc::process(f, mask);
-		
 		w = f.clone();
-		w = Scalar(0xFF, 0xFF, 0xFF);
-		f.copyTo(w, mask);
-		
+		shiu.process(f);
+		shiu.show(f, w);
+		imshow("labal", w);
 #if defined(WITH_REC)
 		rec.write(w);
 #endif

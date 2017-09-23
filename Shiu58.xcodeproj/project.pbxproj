@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C1ECA2A1F586D1B00DCA1F4 /* ShiuProc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C1ECA281F586D1B00DCA1F4 /* ShiuProc.cpp */; };
-		8C1ECA2B1F586D1B00DCA1F4 /* ShiuProc.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8C1ECA291F586D1B00DCA1F4 /* ShiuProc.hpp */; };
 		8C3516501F5006CD00D2801A /* Shiu58.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8C35164E1F5006CD00D2801A /* Shiu58.cpp */; };
 		8C3516511F5006CD00D2801A /* Shiu58.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8C35164F1F5006CD00D2801A /* Shiu58.hpp */; };
 		8C4270291F4D35B90025ED70 /* libopencv_core.3.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4270271F4D35B90025ED70 /* libopencv_core.3.3.0.dylib */; };
@@ -72,8 +70,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8C1ECA281F586D1B00DCA1F4 /* ShiuProc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShiuProc.cpp; sourceTree = "<group>"; };
-		8C1ECA291F586D1B00DCA1F4 /* ShiuProc.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShiuProc.hpp; sourceTree = "<group>"; };
 		8C35164E1F5006CD00D2801A /* Shiu58.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shiu58.cpp; sourceTree = "<group>"; };
 		8C35164F1F5006CD00D2801A /* Shiu58.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shiu58.hpp; sourceTree = "<group>"; };
 		8C4270271F4D35B90025ED70 /* libopencv_core.3.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.3.3.0.dylib; path = opencv/lib/libopencv_core.3.3.0.dylib; sourceTree = "<group>"; };
@@ -170,8 +166,6 @@
 				8C6B53921F51BBED00305351 /* ShiuBgs.hpp */,
 				8CE67DCF1F55C76000642E7A /* ShiuDetect.cpp */,
 				8CE67DD01F55C76000642E7A /* ShiuDetect.hpp */,
-				8C1ECA281F586D1B00DCA1F4 /* ShiuProc.cpp */,
-				8C1ECA291F586D1B00DCA1F4 /* ShiuProc.hpp */,
 				8C941EFB1F600509009DE194 /* ShiuPalm.cpp */,
 				8C941EFC1F600509009DE194 /* ShiuPalm.hpp */,
 				8C7CC6A21F72BFEA00AE293D /* Shiu.cpp */,
@@ -271,7 +265,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C941EFE1F600509009DE194 /* ShiuPalm.hpp in Headers */,
-				8C1ECA2B1F586D1B00DCA1F4 /* ShiuProc.hpp in Headers */,
 				8C69DA8C1F4C80CA006A81AC /* haar.hpp in Headers */,
 				8CBEF9C01F73B0B000BAA4DE /* ShiuCc.hpp in Headers */,
 				8CCDE1021F626DF000A7D0CF /* ShiuFinger.hpp in Headers */,
@@ -417,7 +410,6 @@
 				8CE67DD11F55C76000642E7A /* ShiuDetect.cpp in Sources */,
 				8CBEF9BF1F73B0B000BAA4DE /* ShiuCc.cpp in Sources */,
 				8C3516501F5006CD00D2801A /* Shiu58.cpp in Sources */,
-				8C1ECA2A1F586D1B00DCA1F4 /* ShiuProc.cpp in Sources */,
 				8C941EFD1F600509009DE194 /* ShiuPalm.cpp in Sources */,
 				8C7CC6A41F72BFEA00AE293D /* Shiu.cpp in Sources */,
 				8CCDE1011F626DF000A7D0CF /* ShiuFinger.cpp in Sources */,
