@@ -6,10 +6,8 @@
 //  Copyright © 2017 ___ZHONGSIFEN___. All rights reserved.
 //
 
-#include "ShiuProc.hpp"
-#include "Shiu.hpp"
-#include "ShiuCc.hpp"
-#include <opencv2/highgui.hpp>
+#include "Shiu58.hpp"
+//#include <opencv2/highgui.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
 using namespace cv;
@@ -19,7 +17,7 @@ Shiu58::process(cv::Mat& f) {
 	_f = f;
 
 	pyrDown(_f, _f);
-	pyrDown(_f, _f);
+//	pyrDown(_f, _f);
 
 	Mat bgr[3], r, g, b;
 	split(_f, bgr);
