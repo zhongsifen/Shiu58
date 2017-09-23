@@ -1556,7 +1556,7 @@ bool CascadeClassifierImpl::Data::read(const FileNode &root)
                 nodes.push_back(node);
             }
 
-            internalNodesIter = leafValues.begin(), internalNodesEnd = leafValues.end();
+			internalNodesIter = leafValues.begin(); internalNodesEnd = leafValues.end();
 
             for( ; internalNodesIter != internalNodesEnd; ++internalNodesIter ) // leaves
                 leaves.push_back((float)*internalNodesIter);
