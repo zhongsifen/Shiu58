@@ -39,19 +39,13 @@ Shiu58::process(cv::Mat& f) {
 	morphologyEx(mask, mask, MORPH_CLOSE, morph);
 	blur(mask, mask, Size(3, 3));
 
-//	CC_STAT_LEFT   = 0, //!< The leftmost (x) coordinate which is the inclusive start of the bounding
-//	//!< box in the horizontal direction.
-//	CC_STAT_TOP    = 1, //!< The topmost (y) coordinate which is the inclusive start of the bounding
-//	//!< box in the vertical direction.
-//	CC_STAT_WIDTH  = 2, //!< The horizontal size of the bounding box
-//	CC_STAT_HEIGHT = 3, //!< The vertical size of the bounding box
-
 	Mat label;
 	Mat stats;
 	Mat centroids;
 	int n = connectedComponentsWithStats(mask, label, stats, centroids);
 	std::vector<Rect> rois;
 	_rois.reserve(n);
+	_rois.clear();
 	for (int i=1; i<n; ++i) {
 		int area = stats.at<int>(i, CC_STAT_AREA);
 		if (area < 16*16) {
@@ -59,28 +53,39 @@ Shiu58::process(cv::Mat& f) {
 			label.setTo(0, mat1);
 		}
 		else {
-			_rois.push_back(*new Rect(Point(stats.at<int>(i, CC_STAT_TOP), stats.at<int>(i, CC_STAT_LEFT)), Size(stats.at<int>(i, CC_STAT_WIDTH), stats.at<int>(i, CC_STAT_HEIGHT))));
+			_rois.push_back(*new Rect(Point(stats.at<int>(i, CC_STAT_LEFT), stats.at<int>(i, CC_STAT_TOP)), Size(stats.at<int>(i, CC_STAT_WIDTH), stats.at<int>(i, CC_STAT_HEIGHT))));
 			
 		}
 	}
 	compare(label, 0, mask, CMP_GT);
 	_label = label;
-	_n = n;
 
-	Mat w;
-	_f.copyTo(w, mask);
-
-	std::vector<std::vector<Point>> contours;
-	std::vector<cv::Vec4i> hierarchy;
-	findContours(label, contours, hierarchy, RETR_FLOODFILL, CHAIN_APPROX_SIMPLE);
-	int size = (int)contours.size();
-	std::vector<Shiu> shius(size);
-	
-	for (int i=0; i<size; ++i) {
-		shius[i].setContour(contours[i]);
-		shius[i].show(w);
+	_contours.reserve(n);
+	_contours.clear();
+//	std::vector<cv::Vec4i> hierarchy;
+	for (int i=0; i<_rois.size(); ++i) {
+		Mat h = _label(_rois[i]);
+		std::vector<std::vector<Point>> contours;
+		findContours(h, contours, RETR_FLOODFILL, CHAIN_APPROX_SIMPLE, _rois[i].tl());
+		int size = (int)contours.size(); if (size < 1) continue;
+		int t=0;
+		double area = contourArea(contours[t]);
+		for (int k=1; k<contours.size(); ++k) {
+			if (area < contourArea(contours[k])) {
+				t = k;
+				area = contourArea(contours[t]);
+			}
+		}
+		_contours.push_back(contours[t]);
 	}
-	imshow("fingers", w);
+
+//	findContours(label, contours, hierarchy, RETR_FLOODFILL, CHAIN_APPROX_SIMPLE);
+//	int size = (int)contours.size();
+//	std::vector<Shiu> shius(size);
+//
+//	for (int i=0; i<size; ++i) {
+//		shius[i].setContour(contours[i]);
+//	}
 	
 	
 	return true;
@@ -88,16 +93,15 @@ Shiu58::process(cv::Mat& f) {
 
 void
 Shiu58::show(cv::Mat& f, cv::Mat& w) {
-	std::vector<Vec3b> colors(_n);
-	colors[0] = Vec3b(0, 0, 0);
-	for(int i = 1; i < _n; ++i) {
-		colors[i] = Vec3b( (rand()&0xFF), (rand()&0xFF), (rand()&0xFF) );
+	w = _f.clone();
+	for (int i=0; i<_rois.size(); ++i) {
+		rectangle(w, _rois[i], Scalar(0x00, 0xF0, 0xF0));
 	}
-	w.create(_label.size(), CV_8UC3);
-	for(int r = 0; r < w.rows; ++r){
-		for(int c = 0; c < w.cols; ++c){
-			int label = _label.at<int>(r, c);
-			w.at<Vec3b>(r, c) = colors[label];
+	
+	for (int i=0; i<_contours.size(); ++i) {
+		std::vector<Point> p = _contours[i];
+		for (int k=0; k<p.size(); ++k) {
+			circle(w, p[k], 2, Scalar(0x00, 0x00, 0xF0));
 		}
 	}
 }

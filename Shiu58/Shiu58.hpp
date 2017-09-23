@@ -14,9 +14,9 @@
 class Shiu58 {
 	cv::Mat _f;
 	cv::Mat _label;
-	int _n;
 	cv::Mat _mask;
 	std::vector<cv::Rect> _rois;
+	std::vector<std::vector<cv::Point>> _contours;
 	
 public:
 	bool process(cv::Mat& f);
