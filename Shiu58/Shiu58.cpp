@@ -46,7 +46,7 @@ Shiu58::process(cv::Mat& f) {
 	_rois.clear();
 	for (int i=1; i<n; ++i) {
 		int area = stats.at<int>(i, CC_STAT_AREA);
-		if (area < 16*16) {
+		if (area < _area_thre) {
 			compare(label, i, mat1, CMP_EQ);
 			label.setTo(0, mat1);
 		}

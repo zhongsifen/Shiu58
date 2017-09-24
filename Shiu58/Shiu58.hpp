@@ -12,6 +12,7 @@
 #include <opencv2/core.hpp>
 
 class Shiu58 {
+	const int _area_thre = 16*16;
 	cv::Mat _f;
 	cv::Mat _label;
 	cv::Mat _mask;
