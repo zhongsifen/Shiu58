@@ -18,8 +18,8 @@ using namespace cv;
 
 const std::string _data("/Users/zhongsifen/Work/Shiu58/data/");
 //const std::string _name("20170915140730.mp4");
-//const std::string _name("20170915140822.mp4");
-const std::string _name("20170915140930.mp4");
+const std::string _name("20170915140822.mp4");
+//const std::string _name("20170915140930.mp4");
 const std::string _path(_data + _name);
 
 #define WITH_FILE
@@ -28,8 +28,6 @@ const std::string _path(_data + _name);
 int main(int argc, const char * argv[]) {
 	bool ret = false;
 	char key = '\0';
-	
-	Shiu58 shiu;
 	
 	Mat f, w, mask;
 	VideoCapture cap;
@@ -45,10 +43,13 @@ int main(int argc, const char * argv[]) {
 	rec.open(_data + "rec264.avi", VideoWriter::fourcc('X','2','6','4'), 25.0, Size(f.cols, f.rows));	if (!rec.isOpened()) return  -1;
 #endif
 
+	Shiu58 shiu;
+	shiu.setup();
+
 	while (true) {
 		ret = cap.read(f);		if (!ret) break;
 		w = f.clone();
-		shiu.process(f);
+		shiu.run(f);
 		shiu.show(f, w);
 		imshow("labal", w);
 #if defined(WITH_REC)

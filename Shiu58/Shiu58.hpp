@@ -10,17 +10,17 @@
 #define Shiu58_hpp
 
 #include <opencv2/core.hpp>
+#include "Shiu.hpp"
 
 class Shiu58 {
 	const int _area_thre = 16*16;
 	cv::Mat _f;
-	cv::Mat _label;
-	cv::Mat _mask;
-	std::vector<cv::Rect> _rois;
-	std::vector<std::vector<cv::Point>> _contours;
 
+	std::vector<Shiu> _shius;
+	
 public:
-	bool process(cv::Mat& f);
+	void setup();
+	void run(cv::Mat& f);
 	void show(cv::Mat& f, cv::Mat& w);
 };
 
